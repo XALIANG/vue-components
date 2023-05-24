@@ -70,8 +70,9 @@ export default {
                 title: "删除",
                 type: "text",
                 size: "small",
-                callBack: row => {
-                  console.info("删除", row);
+                callBack: (scope, type, index) => {
+                  this.list.splice(index, 1);
+                  console.info("删除", this.list);
                 }
               }
             ]
