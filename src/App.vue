@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Basic-table :tableData="list" :tableConfigure="config">
+    <Basic-table :tableData="list" :tableConfigure="config" @handle-click="handleClick" >
       <template #testSlot="scope">{{ scope.row.testSlot }}</template>
     </Basic-table>
     <Pagination @current-change="currentChange" @size-change="sizeChange" :pageData="pageData" />
@@ -54,26 +54,19 @@ export default {
                 title: "查看",
                 type: "text",
                 size: "small",
-                callBack: (scope, type, index) => {
-                  console.info("查看", scope.row, type, index);
-                }
+                click:'handleView'
               },
               {
                 title: "修改",
                 type: "text",
                 size: "small",
-                callBack: row => {
-                  console.info("修改", row);
-                }
+                click:'handleEdit'
               },
               {
                 title: "删除",
                 type: "text",
                 size: "small",
-                callBack: (scope, type, index) => {
-                  this.list.splice(index, 1);
-                  console.info("删除", this.list);
-                }
+                click:'handleDelete'
               }
             ]
           }
@@ -206,6 +199,18 @@ export default {
     this.listCopy1 = this.list;
   },
   methods: {
+    handleClick({row,clickType}){
+      this[clickType](row);
+    },
+    handleDelete(){
+      console.info('delete');
+    },
+    handleView(){
+      console.info('view');
+    },
+    handleEdit(){
+      console.info('edit');
+    },
     sizeChange(val) {
       this.size = val;
       this.listCopy = this.listCopy1;

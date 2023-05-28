@@ -50,7 +50,7 @@
                 v-for="btn in item.operateButtons"
                 :key="btn.title"
                 :type="btn.type"
-                @click="btn.callBack(scope,item.operateButtons,scope.$index)"
+                @click="handleEventer(scope,btn.click,scope.$index)"
                 :size="btn.size"
               >{{ btn.title }}</el-button>
             </template>
@@ -99,7 +99,10 @@ export default {
     selectionChange(value) {
       this.multipleSelection = value;
       this.$emit("selection-change", value);
-    },  
+    },
+    handleEventer({row},clickType,index){
+      this.$emit('handle-click',{row,clickType,index});
+    }
   }
 };
 </script>
