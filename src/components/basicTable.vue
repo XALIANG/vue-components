@@ -12,7 +12,7 @@
           <!-- checkbox -->
           <el-table-column
             v-if="item.type === 'selection'"
-            :width="item.width"
+            :width="45"
             type="selection"
             :key="item.type"
           ></el-table-column>
