@@ -7,6 +7,7 @@
         tooltip-effect="dark"
         :data="tableData"
         v-loading="loading"
+        v-bind="$attrs"
       >
         <template v-for="item in tableConfigure.column">
           <!-- checkbox -->
@@ -18,14 +19,15 @@
           ></el-table-column>
 
           <el-table-column
-            v-if="item.type === 'index'"
+            v-else-if="item.type === 'index'"
             :width="item.width"
+            :label="item.label"
             type="index"
             :key="item.type"
-          ></el-table-column>``
+          ></el-table-column>
           <!-- slot -->
           <el-table-column
-            v-if="item.type === 'slot'"
+            v-else-if="item.type === 'slot'"
             :key="item.prop"
             :show-overflow-tooltip="item.tooltip"
             :label="item.label"
@@ -58,13 +60,23 @@
 
           <!-- basic -->
           <el-table-column
-            v-else
+            v-else-if="item.tooltip"
             :key="item.prop"
             :label="item.label"
             :prop="item.prop"
             :width="item.width"
             :show-overflow-tooltip="item.tooltip"
           ></el-table-column>
+
+
+          <el-table-column
+          v-else
+          :key="item.prop"
+          :prop="item.prop"
+          :label="item.label"
+          :width="item.width"
+          align="center"
+        ></el-table-column>
         </template>
       </el-table>
     </div>
@@ -94,6 +106,12 @@ export default {
       dialogVisible: false,
       loading: false
     };
+  },
+  mounted(){
+    console.info('$attrs',this.$attrs.conAlan);
+    console.info('$listeners',this.$listeners);
+    // this.$listeners.test();
+
   },
   methods: {
     selectionChange(value) {

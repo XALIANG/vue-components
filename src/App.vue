@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Basic-table :tableData="list" :tableConfigure="config" @handle-click="handleClick" >
+    <Basic-table conAlan="luliang" :tableData="list" :tableConfigure="config" @handle-click="handleClick"  @test="submit">
       <template #testSlot="scope">{{ scope.row.testSlot }}</template>
     </Basic-table>
     <Pagination @current-change="currentChange" @size-change="sizeChange" :pageData="pageData" />
@@ -22,12 +22,13 @@ export default {
         column: [
           {
             type: "selection",
-            width: "20"
+            width: "10"
           },
-          // {
-          //   type: "index",
-          //   width: "50"
-          // },
+          {
+            type: "index",
+            label:'排序',
+            width: "50",
+          },
           {
             label: "姓名",
             width: "100",
@@ -206,7 +207,7 @@ export default {
       console.info('delete');
     },
     handleView(){
-      console.info('view');
+      console.info('view',this.$listeners);
     },
     handleEdit(){
       console.info('edit');
@@ -222,6 +223,9 @@ export default {
       console.info(val);
       this.listCopy = this.listCopy1;
       // const data = this.listCopy.slice(val,);
+    },
+    submit(){
+      console.info('test111');
     }
   }
 };
