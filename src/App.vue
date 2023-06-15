@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <Basic-table conAlan="luliang" :tableData="list" :tableConfigure="config" @handle-click="handleClick"  @test="submit">
+    <div>
+      <Basic-table autoHeight conAlan="luliang" :tableData="list" :tableConfigure="config" >
       <template #testSlot="scope">{{ scope.row.testSlot }}</template>
     </Basic-table>
+    </div>
     <Pagination @current-change="currentChange" @size-change="sizeChange" :pageData="pageData" />
   </div>
 </template>
@@ -22,33 +24,27 @@ export default {
         column: [
           {
             type: "selection",
-            width: "10"
           },
           {
             type: "index",
             label:'排序',
-            width: "50",
           },
           {
             label: "姓名",
-            width: "100",
             prop: "name"
           },
           {
             label: "数字",
-            width: "100",
             prop: "age",
             tooltip: true
           },
           {
-            label: "测试 slot",
-            width: "100",
+            label: "测试slot",
             slot: "testSlot",
             type: "slot"
           },
           {
             label: "操作",
-            width: "290",
             type: "operate",
             operateButtons: [
               {
@@ -86,6 +82,48 @@ export default {
             "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
         },
         {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          name: "test",
+          testSlot: "888",
+          age:
+            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
           name: "testwwwwwwww",
           age: 312312,
           testSlot: "000"
@@ -94,7 +132,7 @@ export default {
           name: "test",
           testSlot: "888",
           age:
-            "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+          "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
         },
         {
           name: "testwwwwwwww",
