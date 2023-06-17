@@ -1,26 +1,28 @@
 <template>
   <div id="app">
     <div>
-      <Basic-table autoHeight conAlan="luliang" :tableData="list" :tableConfigure="config" >
+      <Basic-table autoHeight conAlan="luliang" :data="list" :columns="column" >
       <template #testSlot="scope">{{ scope.row.testSlot }}</template>
+      <template #btn >
+        sadsa
+      </template>
     </Basic-table>
     </div>
-    <Pagination @current-change="currentChange" @size-change="sizeChange" :pageData="pageData" />
+    <!-- <Pagination @current-change="currentChange" @size-change="sizeChange" :pageData="pageData" /> -->
   </div>
 </template>
 
 <script>
 import BasicTable from "./components/basicTable.vue";
-import Pagination from "./components/Pagination.vue";
+// import Pagination from "./components/Pagination.vue";
 export default {
   name: "App",
   components: {
     BasicTable,
-    Pagination
+    // Pagination
   },
   data() {
     return {
-      config: {
         column: [
           {
             type: "selection",
@@ -41,34 +43,34 @@ export default {
           {
             label: "测试slot",
             slot: "testSlot",
-            type: "slot"
+            type: "slot",
+            tooltip: true
           },
           {
             label: "操作",
             type: "operate",
-            operateButtons: [
-              {
-                title: "查看",
-                type: "text",
-                size: "small",
-                click:'handleView'
-              },
-              {
-                title: "修改",
-                type: "text",
-                size: "small",
-                click:'handleEdit'
-              },
-              {
-                title: "删除",
-                type: "text",
-                size: "small",
-                click:'handleDelete'
-              }
-            ]
+            // operateButtons: [
+            //   {
+            //     title: "查看",
+            //     type: "text",
+            //     size: "small",
+            //     click:'handleView'
+            //   },
+            //   {
+            //     title: "修改",
+            //     type: "text",
+            //     size: "small",
+            //     click:'handleEdit'
+            //   },
+            //   {
+            //     title: "删除",
+            //     type: "text",
+            //     size: "small",
+            //     click:'handleDelete'
+            //   }
+            // ]
           }
-        ]
-      },
+        ],
       pageData: {
         page: 1,
         pageSize: 10,
@@ -77,7 +79,7 @@ export default {
       list: [
         {
           name: "test",
-          testSlot: "888",
+          testSlot: "8880000000000000000000000000000000000000000000000000000023",
           age:
             "666555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
         },
